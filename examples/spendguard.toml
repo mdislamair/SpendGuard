@@ -1,0 +1,38 @@
+# spendguard.toml - run `spendguard check` to compare your usage to these limits.
+
+# Optional. Defaults to this computer's timezone. Day/week/month boundaries use it.
+# timezone = "Asia/Kolkata"
+
+# Warn when spend reaches this fraction of a limit.
+warn_at = 0.8
+
+# Global limits in USD, for the current day / ISO week (Monday start) / calendar month.
+[budget]
+daily = 20
+weekly = 100
+monthly = 300
+
+# Optional per-project limits. The name matches the project folder name.
+[projects.my-repo]
+monthly = 50
+
+# Prices are USD per 1 million tokens. The built-in values are only STARTER
+# estimates. Check your provider's pricing page and edit these.
+# The longest matching pattern wins, e.g. "sonnet-4" beats "sonnet".
+[pricing.sonnet]
+input = 3.0
+output = 15.0
+# cache_read  defaults to 10% of input, cache_write to 125% of input
+
+[pricing.opus]
+input = 15.0
+output = 75.0
+
+[pricing.haiku]
+input = 1.0
+output = 5.0
+
+# Optional. Where to read usage from. Defaults: Claude Code's local log folders.
+# [sources]
+# claude = ["~/.claude/projects"]
+# usage  = ["team-usage.jsonl"]   # normalised JSONL, see README
